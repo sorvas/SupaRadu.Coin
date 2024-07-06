@@ -32,6 +32,9 @@ jobs:
       - name: Build application
         run: npm run build
         working-directory: ./Suparadu.Coin.Web
+      - name: List dist contents
+        run: ls -R dist
+        working-directory: ./Suparadu.Coin.Web
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
@@ -41,7 +44,7 @@ jobs:
           action: "upload"
           app_location: "./Suparadu.Coin.Web"
           api_location: ""
-          output_location: "{angular.json#Object.values(data.projects)[0].architect.build.options.outputPath}"
+          output_location: "dist/suparadu.coin.web"  # Updated to match the exact path
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
