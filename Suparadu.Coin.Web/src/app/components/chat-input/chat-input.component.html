@@ -1,1 +1,12 @@
-<p>chat-input works!</p>
+<div id="talk-to-suparadu" class="chat-input-container">
+    <label for="good-news-input">Got some happy news? Spill it—I can't wait to ruin it for you!</label>
+    <div class="input-group">
+        <input type="text" id="good-news-input" [(ngModel)]="userInput" placeholder="Enter your good news here..."
+            (keyup.enter)="onSubmit()" [disabled]="isLoading">
+        <button (click)="onSubmit()" [disabled]="isLoading">Share</button>
+    </div>
+    <div class="response-area">
+        <p *ngIf="isLoading" class="loading">{{ loadingText$ | async }}</p>
+        <p *ngIf="response" class="response">SupaRadu says: {{ response }}</p>
+    </div>
+</div>

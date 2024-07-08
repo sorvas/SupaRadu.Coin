@@ -1,0 +1,18 @@
+.radu-image-container {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.radu-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.market-cap {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
