@@ -5,6 +5,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ChatInputComponent } from './components/chat-input/chat-input.component';
 import { RaduImageComponent } from './components/radu-image/radu-image.component';
 import { AboutComponent } from './components/about/about.component';
+import { TokenomicsComponent } from './components/tokenomics/tokenomics.component';
+import { RoadmapComponent } from './components/roadmap/roadmap.component';
+import { HowtobuyComponent } from './components/howtobuy/howtobuy.component';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +18,10 @@ import { AboutComponent } from './components/about/about.component';
     FooterComponent,
     AboutComponent,
     ChatInputComponent,
-    RaduImageComponent
+    RaduImageComponent,
+    TokenomicsComponent,
+    RoadmapComponent,
+    HowtobuyComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

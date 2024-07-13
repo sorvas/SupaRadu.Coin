@@ -1,15 +1,18 @@
-<header class="header">
+<div class="header-container">
+  <header class="header">
     <div class="logo">
       <h1>SupaRadu</h1>
     </div>
     <nav class="navigation">
       <ul>
-        <li><a href="#home" (click)="scrollTo('home')">HOME</a></li>
-        <li><a href="#about" (click)="scrollTo('about')">ABOUT</a></li>
-        <li><a href="#how-to-buy" (click)="scrollTo('how-to-buy')">HOW TO BUY</a></li>
-        <li><a href="#talk-to-suparadu" (click)="scrollTo('talk-to-suparadu')">TALK TO SUPARADU</a></li>
-        <li><a href="#tokenomics" (click)="scrollTo('tokenomics')">TOKENOMICS</a></li>
-        <li><a href="#roadmap" (click)="scrollTo('roadmap')">ROADMAP</a></li>
+        <li><a (click)="scrollTo('home')">HOME</a></li>
+        <li><a (click)="scrollTo('about')">ABOUT</a></li>
+        <li><a (click)="scrollTo('how-to-buy')">HOW TO BUY</a></li>
+        <li><a (click)="scrollTo('talk-to-suparadu')">TALK TO SUPARADU</a></li>
+        <li><a (click)="scrollTo('tokenomics')">TOKENOMICS</a></li>
+        <li><a (click)="scrollTo('roadmap')">ROADMAP</a></li>
       </ul>
     </nav>
   </header>
+</div>
+<div class="header-spacer"></div>

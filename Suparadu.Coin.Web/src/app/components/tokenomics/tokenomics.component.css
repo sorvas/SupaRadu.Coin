@@ -1,0 +1,29 @@
+.tokenomics {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.tokenomics-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.tokenomics-content {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.tokenomics-main {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.tokenomics-details {
+    font-style: italic;
+}

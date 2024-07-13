@@ -1,0 +1,18 @@
+.footer {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.disclaimer {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.copyright {
+    font-size: 12px;
+}
