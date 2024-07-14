@@ -9,9 +9,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ade2f52-fded-49a1-8c78-0a8da18f462f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Suparadu.Claude.ClientApi/Suparadu.Claude.ClientApi.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Suparadu.Claude.ClientApi/ClaudeApi.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Suparadu.Claude.ClientApi/Services/ClaudeClientService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Suparadu.Claude.ClientApi/Services/IClaudeClientService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Suparadu.Coin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Suparadu.Coin/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Suparadu.Coin.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Suparadu.Coin.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Suparadu.Claude.ClientApi/Suparadu.Claude.ClientApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Suparadu.Claude.ClientApi/Suparadu.Claude.ClientApi.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +121,7 @@
       <updated>1720034074544</updated>
       <workItem from="1720034076264" duration="809000" />
       <workItem from="1720109971728" duration="5859000" />
-      <workItem from="1720969174056" duration="835000" />
+      <workItem from="1720969174056" duration="2217000" />
     </task>
     <servers />
   </component>
