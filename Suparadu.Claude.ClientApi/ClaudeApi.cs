@@ -10,15 +10,15 @@ public class ClaudeApi(ILoggerFactory loggerFactory)
 {
     private readonly ILogger _logger = loggerFactory.CreateLogger<ClaudeApi>();
 
-    [Function("ClaudeApi")]
-    public IActionResult Run([HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequestData req,
+    [Function("GetNegativeReply")]
+    public IActionResult GetNegativeReply([HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequestData req,
         FunctionContext executionContext)
     {
-        _logger.LogInformation("C# HTTP trigger function processed a request");
+        _logger.LogInformation($"{nameof(GetNegativeReply)} HTTP trigger function processed a request");
 
         HttpResponseData response = req.CreateResponse(HttpStatusCode.OK);
 
-        response.WriteString("Welcome to Azure Functions!");
+        response.WriteString("Claude API called!");
 
         return new OkObjectResult(response);
     }
