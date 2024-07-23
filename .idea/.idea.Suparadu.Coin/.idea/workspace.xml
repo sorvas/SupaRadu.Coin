@@ -9,8 +9,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ade2f52-fded-49a1-8c78-0a8da18f462f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vscode/tasks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Suparadu.Claude.ClientApi/Constants/Constants.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Suparadu.Claude.ClientApi/Models/ClaudeApiSettings.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Suparadu.Claude.ClientApi/Services/ClaudeApiClient.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Suparadu.Claude.ClientApi/Services/IClaudeApiClient.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Suparadu.Claude.ClientApi/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Suparadu.Coin.sln.DotSettings.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Suparadu.Coin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Suparadu.Coin/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Suparadu.Claude.ClientApi/ClaudeApi.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Suparadu.Claude.ClientApi/ClaudeApi.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Suparadu.Claude.ClientApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Suparadu.Claude.ClientApi/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Suparadu.Claude.ClientApi/Services/ClaudeClientService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Suparadu.Claude.ClientApi/Services/IClaudeClientService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Suparadu.Claude.ClientApi/Suparadu.Claude.ClientApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Suparadu.Claude.ClientApi/Suparadu.Claude.ClientApi.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Suparadu.Coin.Web/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/Suparadu.Coin.Web/src/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,24 +33,33 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JSON File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "sorvas"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;sorvas&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/sorvas/SupaRadu.Coin.git",
-    "accountId": "3bbada2f-2b11-4f49-8eab-4bb7884f2fbc"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/sorvas/SupaRadu.Coin.git&quot;,
+    &quot;accountId&quot;: &quot;3bbada2f-2b11-4f49-8eab-4bb7884f2fbc&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://D:/Apps/SupaRadu.Coin/Suparadu.Claude.ClientApi/ClaudeApi.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Suparadu.Coin.Web/package-lock.json" root0="SKIP_HIGHLIGHTING" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -50,11 +74,13 @@
     &quot;Azure - Publish Function App.Publish Suparadu.Claude.ClientApi to Azure.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore_missing_gitignore&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;RiderNetFileTemplatesSettingsId&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -67,7 +93,7 @@
 }</component>
   <component name="RunManager" selected="Azure Functions host.Suparadu.Claude.ClientApiFunction">
     <configuration name="Publish Suparadu.Claude.ClientApi to Azure" type="AzureFunctionAppPublish" factoryName="Azure Function App">
-      <option name="AZURE_FUNCTION_APP_PROJECT" value="$PROJECT_DIR$/Suparadu.Claude.ClientApi/Suparadu.Claude.ClientApi.csproj" />
+      <option name="AZURE_FUNCTION_APP_PROJECT" value="" />
       <option name="AZURE_FUNCTION_APP_CONFIGURATION" value="Release" />
       <option name="AZURE_FUNCTION_APP_PLATFORM" value="Any CPU" />
       <option name="AZURE_FUNCTION_APP_SUBSCRIPTION_ID" value="5d1945d5-dec9-4f44-ad91-afd44975030d" />
@@ -120,7 +146,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -140,7 +166,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -179,12 +205,14 @@
       <workItem from="1721133805832" duration="1005000" />
       <workItem from="1721202871034" duration="2554000" />
       <workItem from="1721664905383" duration="43000" />
+      <workItem from="1721664962606" duration="5246000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

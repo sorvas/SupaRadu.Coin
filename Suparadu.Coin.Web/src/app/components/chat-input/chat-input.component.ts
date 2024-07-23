@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BehaviorSubject, Observable, timer, of } from 'rxjs';
-import { map, takeWhile, switchMap } from 'rxjs/operators';
+import { map, takeWhile, switchMap, finalize } from 'rxjs/operators';
+import { ClaudeApiService } from '../../services/claude-api.service';
 
 @Component({
   selector: 'app-chat-input',
@@ -12,6 +13,8 @@ import { map, takeWhile, switchMap } from 'rxjs/operators';
   styleUrl: './chat-input.component.css'
 })
 export class ChatInputComponent {
+  private claudeApiService = inject(ClaudeApiService);
+
   userInput: string = '';
   response: string = '';
   isLoading: boolean = false;
@@ -20,7 +23,7 @@ export class ChatInputComponent {
 
   constructor() {
     this.loadingText$ = this.loadingSubject.pipe(
-      switchMap(isLoading => 
+      switchMap(isLoading =>
         isLoading ? this.getLoadingText() : of('')
       )
     );
@@ -33,13 +36,23 @@ export class ChatInputComponent {
     this.loadingSubject.next(true);
     this.response = '';
 
-    // Simulate API call delay
-    setTimeout(() => {
-      this.response = "Well, isn't that just delightful... for everyone else.";
-      this.isLoading = false;
-      this.loadingSubject.next(false);
-      this.userInput = ''; // Clear the input after submission
-    }, 3000);
+    this.claudeApiService.getNegativeReply(this.userInput)
+      .pipe(
+        finalize(() => {
+          this.isLoading = false;
+          this.loadingSubject.next(false);
+          this.userInput = ''; // Clear the input after submission
+        })
+      )
+      .subscribe({
+        next: (result) => {
+          this.response = result.response;
+        },
+        error: (error) => {
+          console.error('Error from Claude API:', error);
+          this.response = 'Sorry, I encountered an error while processing your request.';
+        }
+      });
   }
 
   private getLoadingText(): Observable<string> {

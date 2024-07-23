@@ -25,11 +25,11 @@ public class ClaudeApiClient : IClaudeApiClient
         _httpClient.DefaultRequestHeaders.Add(Constants.ClaudeApiHeaders.AnthropicVersion, _claudeApiSettings.AnthropicVersion);
     }
 
-    public async Task<string> GetResponseAsync(string prompt, string model = "claude-3-sonnet-20240229")
+    public async Task<string> GetResponseAsync(string prompt)
     {
         ClaudeApiRequest request = new()
         {
-            Model = model,
+            Model = _claudeApiSettings.ClaudeModel,
             MaxTokens = 1000,
             Messages =
             [

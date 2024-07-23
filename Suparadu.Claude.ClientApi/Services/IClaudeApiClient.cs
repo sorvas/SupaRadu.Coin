@@ -2,5 +2,5 @@
 
 public interface IClaudeApiClient
 {
-    Task<string> GetResponseAsync(string prompt, string model = "claude-3-sonnet-20240229");
+    Task<string> GetResponseAsync(string prompt);
 }
