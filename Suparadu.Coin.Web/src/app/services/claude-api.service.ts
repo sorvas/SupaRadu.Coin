@@ -10,11 +10,10 @@ export class ClaudeApiService {
   private http = inject(HttpClient);
   private apiUrl = environment.azureFunctionUrl;
 
-  getNegativeReply(prompt: string): Observable<ClaudeApiResponse> {
-    return this.http.post<ClaudeApiResponse>(`${this.apiUrl}/api/GetNegativeReply`, { prompt });
+  getNegativeReply(prompt: string): Observable<string> {
+    return this.http.post(`${this.apiUrl}/api/GetNegativeReply`, prompt, {
+      headers: { 'Content-Type': 'text/plain' },
+      responseType: 'text'
+    });
   }
-}
-
-interface ClaudeApiResponse {
-  response: string;
 }

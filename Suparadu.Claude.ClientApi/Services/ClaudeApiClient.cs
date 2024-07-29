@@ -30,7 +30,7 @@ public class ClaudeApiClient : IClaudeApiClient
         ClaudeApiRequest request = new()
         {
             Model = _claudeApiSettings.ClaudeModel,
-            MaxTokens = 1000,
+            MaxTokens = _claudeApiSettings.MaxTokens,
             Messages =
             [
                 new Message
@@ -39,7 +39,7 @@ public class ClaudeApiClient : IClaudeApiClient
                     Content = prompt
                 }
             ],
-            System = "BASE SYSTEM BEHAVIOR PROMPT",
+            System = _claudeApiSettings.ClaudeSystemPrompt,
             Temperature = 0.7m
         };
 

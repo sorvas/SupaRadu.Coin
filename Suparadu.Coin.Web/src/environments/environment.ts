@@ -1,4 +1,4 @@
 ﻿export const environment = {
-  production: false,
-  azureFunctionUrl: 'https://function-name.azurewebsites.net'
+  production: true,
+  azureFunctionUrl: 'http://localhost:7071'
 };

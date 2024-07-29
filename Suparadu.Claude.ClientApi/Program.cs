@@ -10,9 +10,14 @@ using Suparadu.Claude.ClientApiFunction.Services;
 
 IHost host = new HostBuilder()
     .ConfigureFunctionsWorkerDefaults()
-    .ConfigureAppConfiguration((_, config) =>
+    .ConfigureAppConfiguration((context, config) =>
     {
-        config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+        config.AddJsonFile(Path.Combine(context.HostingEnvironment.ContentRootPath, "appsettings.json"), optional: true,
+            reloadOnChange: false);
+        config.AddJsonFile(
+            Path.Combine(context.HostingEnvironment.ContentRootPath,
+                $"appsettings.{Environment.GetEnvironmentVariable("AZURE_FUNCTIONS_ENVIRONMENT")}.json"),
+            optional: true, reloadOnChange: true);
         config.AddEnvironmentVariables();
     })
     .ConfigureServices((context, services) =>
@@ -21,13 +26,13 @@ IHost host = new HostBuilder()
         services.ConfigureFunctionsApplicationInsights();
 
         services.Configure<ClaudeApiSettings>(context.Configuration.GetSection("ClaudeApi"));
-        
+
         services.Configure<JsonSerializerOptions>(options =>
         {
             options.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
             options.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
         });
-        
+
         services.AddHttpClient<ClaudeApiClient>((serviceProvider, client) =>
         {
             ClaudeApiSettings settings = serviceProvider.GetRequiredService<IOptions<ClaudeApiSettings>>().Value;
@@ -35,6 +40,16 @@ IHost host = new HostBuilder()
         });
 
         services.AddScoped<IClaudeApiClient, ClaudeApiClient>();
+
+        services.AddCors(options =>
+        {
+            options.AddDefaultPolicy(builder =>
+            {
+                builder.WithOrigins("http://localhost:4200")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            });
+        });
     })
     .Build();
 

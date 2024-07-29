@@ -1,6 +1,7 @@
-﻿using Microsoft.Azure.Functions.Worker;
+﻿using System.Net;
+using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
 using Microsoft.Extensions.Logging;
 using Suparadu.Claude.ClientApiFunction.Services;
 
@@ -11,15 +12,21 @@ public class ClaudeApi(ILoggerFactory loggerFactory, IClaudeApiClient claudeApiC
     private readonly ILogger _logger = loggerFactory.CreateLogger<ClaudeApi>();
 
     [Function("GetNegativeReply")]
-    public async Task<IActionResult> GetNegativeReply([HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequestData req,
+    [OpenApiOperation(operationId: "GetNegativeReply", tags: ["name"])]
+    [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "text/plain", bodyType: typeof(string), Description = "The OK response")]
+    public async Task<HttpResponseData> GetNegativeReply([HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequestData req,
         FunctionContext executionContext)
     {
-        _logger.LogInformation($"{nameof(GetNegativeReply)} HTTP trigger function processed a request");
-
         var prompt = await new StreamReader(req.Body).ReadToEndAsync();
+        _logger.LogInformation("Received prompt: {Prompt}", prompt);
         
         var responseMessage = await claudeApiClient.GetResponseAsync(prompt);
+        _logger.LogInformation("Claude API response: {ResponseMessage}", responseMessage);
 
-        return new OkObjectResult(responseMessage);
+        HttpResponseData response = req.CreateResponse(HttpStatusCode.OK);
+        response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
+        await response.WriteStringAsync(responseMessage);
+
+        return response;
     }
 }

@@ -6,4 +6,6 @@ public class ClaudeApiSettings
     public string BaseUrl { get; set; } = string.Empty;
     public string AnthropicVersion { get; set; } = string.Empty;
     public string ClaudeModel { get; set; } = string.Empty;
+    public string ClaudeSystemPrompt { get; set; } = string.Empty;
+    public int MaxTokens { get; set; }
 }
