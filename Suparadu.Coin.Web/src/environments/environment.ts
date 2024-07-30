@@ -1,4 +1,4 @@
 ﻿export const environment = {
   production: true,
-  azureFunctionUrl: 'http://localhost:7071'
+  azureFunctionUrl: 'https://suparadu-coin-claude-client-api.azurewebsites.net'
 };
