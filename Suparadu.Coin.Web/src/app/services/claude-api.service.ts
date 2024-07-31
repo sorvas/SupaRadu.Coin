@@ -15,7 +15,7 @@ export class ClaudeApiService {
     headers.set('x-functions-key', environment.negativeFunctionKey);
     headers.set('Content-Type', 'text/plain');
 
-    return this.http.post(`${this.apiUrl}/GetNegativeReply`, prompt, {
+    return this.http.post(`${this.apiUrl}/api/GetNegativeReply`, prompt, {
       headers: headers,
       responseType: 'text'
     });
