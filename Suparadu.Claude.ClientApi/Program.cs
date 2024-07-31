@@ -22,6 +22,15 @@ IHost host = new HostBuilder()
     })
     .ConfigureServices((context, services) =>
     {
+        services.AddCors(options =>
+        {
+            options.AddPolicy("AllowSpecificOrigin",
+                builder => builder
+                    .WithOrigins("https://green-river-09744ca03.5.azurestaticapps.net", "http://localhost:3000")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+        });
+        
         services.AddApplicationInsightsTelemetryWorkerService();
         services.ConfigureFunctionsApplicationInsights();
 
