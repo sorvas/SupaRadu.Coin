@@ -1,5 +1,4 @@
 name: Azure Static Web Apps CI/CD
-
 on:
   push:
     branches:
@@ -12,12 +11,10 @@ on:
       - main
     paths-ignore:
       - 'Suparadu.Claude.ClientApi/**'
-
 env:
   NODE_VERSION: 20
   APP_LOCATION: "./Suparadu.Coin.Web"
   OUTPUT_LOCATION: "dist/suparadu.coin.web/browser"
-
 jobs:
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
@@ -38,8 +35,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
         working-directory: ${{ env.APP_LOCATION }}
+      - name: Replace environment variables
+        run: |
+          sed -i 's|#{azureFunctionUrl}#|${{ secrets.azureFunctionUrl }}|g' src/environments/environment.prod.ts
+          sed -i 's|#{negativeFunctionKey}#|${{ secrets.negativeFunctionKey }}|g' src/environments/environment.prod.ts
+        working-directory: ${{ env.APP_LOCATION }}
       - name: Build application
-        run: npm run build
+        run: npm run build -- --configuration production
         working-directory: ${{ env.APP_LOCATION }}
       - name: List dist contents
         run: |
@@ -54,9 +56,6 @@ jobs:
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
-        env:
-          negativeFunctionKey: ${{ secrets.negativeFunctionKey }}
-          azureFunctionUrl: ${{ secrets.azureFunctionUrl }}
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_GREEN_RIVER_09744CA03 }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
@@ -64,7 +63,6 @@ jobs:
           app_location: ${{ env.APP_LOCATION }}
           api_location: ""
           output_location: ${{ env.OUTPUT_LOCATION }}
-
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest

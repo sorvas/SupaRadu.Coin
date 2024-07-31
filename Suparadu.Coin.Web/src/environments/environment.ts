@@ -1,5 +1,4 @@
 ﻿export const environment = {
-  production: true,
-  azureFunctionUrl: 'https://suparadu-coin-claude-api.azurewebsites.net',
-  negativeFunctionKey: '#{negativeFunctionKey}#'
+  azureFunctionUrl: 'http://localhost:7071',
+  negativeFunctionKey: ''
 };
