@@ -1,4 +1,4 @@
-name: Build and deploy Suparadu.Claude.ClientApi to Azure Function App
+name: Build and deploy dotnet core app to Azure Function App - suparadu-coin-claude-api
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - 'Suparadu.Claude.ClientApi/**'
-      - '.github/workflows/main_suparadu-coin-claude-client-api.yml'
+      - '.github/workflows/main_suparadu-coin-claude-api.yml'
   pull_request:
     branches:
       - main
@@ -15,33 +15,42 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_FUNCTIONAPP_NAME: 'suparadu-coin-claude-client-api'
+  AZURE_FUNCTIONAPP_NAME: 'suparadu-coin-claude-api'
   AZURE_FUNCTIONAPP_PACKAGE_PATH: './Suparadu.Claude.ClientApi'
   DOTNET_VERSION: '8.0.x'
 
 jobs:
   build-and-deploy:
     runs-on: windows-latest
+    permissions:
+      id-token: write
     steps:
-    - name: 'Checkout GitHub Action'
-      uses: actions/checkout@v4
+      - name: 'Checkout GitHub Action'
+        uses: actions/checkout@v4
 
-    - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
+      - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
 
-    - name: 'Resolve Project Dependencies Using Dotnet'
-      shell: pwsh
-      run: |
-        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-        dotnet build --configuration Release --output ./output
-        popd
+      - name: 'Resolve Project Dependencies Using Dotnet'
+        shell: pwsh
+        run: |
+          pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+          dotnet build --configuration Release --output ./output
+          popd
 
-    - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v1.5.0
-      id: fa
-      with:
-        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
-        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5A6815D4628A4641A9F75FE618E859CA }}
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: 'Run Azure Functions Action'
+        uses: Azure/functions-action@v1
+        id: fa
+        with:
+          app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
+          slot-name: 'production'
+          package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
