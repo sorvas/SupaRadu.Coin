@@ -1,4 +1,5 @@
 name: Azure Static Web Apps CI/CD
+
 on:
   push:
     branches:
@@ -11,6 +12,7 @@ on:
       - main
     paths-ignore:
       - 'Suparadu.Claude.ClientApi/**'
+      
 env:
   NODE_VERSION: 20
   APP_LOCATION: "./Suparadu.Coin.Web"
@@ -63,6 +65,7 @@ jobs:
           app_location: ${{ env.APP_LOCATION }}
           api_location: ""
           output_location: ${{ env.OUTPUT_LOCATION }}
+          
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
