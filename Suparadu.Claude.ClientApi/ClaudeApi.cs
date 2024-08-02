@@ -14,7 +14,7 @@ public class ClaudeApi(ILoggerFactory loggerFactory, IClaudeApiClient claudeApiC
     [Function("GetNegativeReply")]
     [OpenApiOperation(operationId: "GetNegativeReply", tags: ["name"])]
     [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "text/plain", bodyType: typeof(string), Description = "The OK response")]
-    public async Task<HttpResponseData> GetNegativeReply([HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequestData req,
+    public async Task<HttpResponseData> GetNegativeReply([HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequestData req,
         FunctionContext executionContext)
     {
         var prompt = await new StreamReader(req.Body).ReadToEndAsync();
