@@ -4,8 +4,7 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background-color: #f8f8f8;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #4CAF50; /* Green background */
 }
 
 .header {
@@ -14,19 +13,19 @@
   align-items: center;
   padding: 1rem 2rem;
   max-width: 1200px;
-  /* Adjust as needed */
   margin: 0 auto;
 }
 
 .header-spacer {
-  height: 60px;
-  /* Adjust this to match your header's height */
+  height: 60px; /* Matches the headerOffset in the scrollTo function */
 }
 
 .logo h1 {
   margin: 0;
-  font-size: 1.5rem;
-  color: #333;
+  font-size: 2.5rem;
+  color: white;
+  font-family: 'Bangers', cursive;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 .navigation ul {
@@ -42,13 +41,16 @@
 
 .navigation a {
   text-decoration: none;
-  color: #333;
+  color: white;
   font-weight: bold;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.1rem;
   transition: color 0.3s ease;
+  cursor: pointer;
 }
 
 .navigation a:hover {
-  color: #007bff;
+  color: #FFD700; /* Gold color on hover */
 }
 
 @media (max-width: 768px) {
